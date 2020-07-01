@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>NetFare Prediction Model</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Year:
+        <input name="year" type="number" required>
+        <br>
+        <br> Month:
+        <input name="month" type="number" required>
+        <br>
+        <br> Day:
+        <input name="day" type="number" required>
+        <br>
+		<br> Hour:
+        <input name="hour" type="number" required>
+        <br>
+        <br> Minute:
+        <input name="minute" type="number" required>
+        <br>
+		<br> Product_Type_Air_Cancellation:
+        <input name="protypeaircanc" type="number" required>
+        <br>
+        <br> Product_Type_Air_Debit_Note:
+        <input name="protypeairdebtnote" type="number" required>
+        <br>
+		<br> Product_Type_Air_Loss:
+        <input name="protypeairloss" type="number" required>
+        <br>
+		<br> Product_Type_Hotel:
+        <input name="protypehot" type="number" required>
+        <br>
+        <br> Product_Type_Hotel_Cancellation:
+        <input name="protypehotcanc" type="number" required>
+        <br>
+		<br> Product_Type_Hotel_Debit_Note:
+        <input name="protypehotdebnote" type="number" required>
+        <br>
+        <br> Product_Type_Hotel_Loss:
+        <input name="protypehotloss" type="number" required>
+        <br>
+		<br> Product_Type_Other_Product:
+        <input name="protypeothpro" type="number" required>
+        <br>
+        <br> Product_Type_Other_Product_Cancellation:
+        <input name="protypeothprocanc" type="number" required>
+        <br>
+		<br> Product_Type_Other_Product_Debit_Note:
+        <input name="protypeothprodebnote" type="number" required>
+        <br>
+        <br> Itenerary_Type_International:
+        <input name="itetypeinter" type="number" required>
+        <br>
+		<br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted NetFare:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</html>
